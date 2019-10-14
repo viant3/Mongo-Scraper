@@ -1,15 +1,15 @@
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
+$.getJSON("/articles", (data) => {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p><br />");
+    $("#articles").append("<h2>" + data[i].title + "</h2><br />" +  "<a href=https://www.nytimes.com/" + data[i].link + ">" + "Click to Read Article" + "</p><br />");
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(document).on("click", "p", () => {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -21,7 +21,7 @@ $(document).on("click", "p", function() {
     url: "/articles/" + thisId
   })
     // With that done, add the note information to the page
-    .then(function(data) {
+    .then((data) => {
       console.log(data);
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
