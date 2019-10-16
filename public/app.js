@@ -1,9 +1,11 @@
 // Grab the articles as a json
 $.getJSON("/articles", (data) => {
   // For each one
+  console.log(data)
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
     $("#articles").append("<h2>" + data[i].title + "</h2><br />" +  "<a href=https://www.nytimes.com/" + data[i].link + ">" + "Click to Read Article" + "</p><br />");
+  console.log(data[i]);
   }
 });
 
