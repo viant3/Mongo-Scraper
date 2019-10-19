@@ -26,7 +26,7 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
-Connect to the Mongo DB
+// Connect to the Mongo DB
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/nytScraper";
 
@@ -36,7 +36,7 @@ mongoose.connect(MONGODB_URI);
 // Routes
 
 // A GET route for scraping the echoJS website
-app.get("/", function(req, res) {
+app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://www.nytimes.com/section/world").then((response) => {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
